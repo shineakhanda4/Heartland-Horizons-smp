@@ -5,141 +5,304 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Heartland Horizons SMP</title>
   <meta name="description" content="Join Heartland Horizons SMP — a warm, friendly Minecraft server built by friends for creative builds, chill survival gameplay, and fun events. Java & Bedrock supported." />
-
-  <!-- Open Graph for social media sharing -->
   <meta property="og:title" content="Heartland Horizons SMP | Cozy Minecraft Survival Server">
   <meta property="og:description" content="Chill Minecraft SMP server by friends, for friends. Java & Bedrock supported. Creative builds, player towns, and good vibes.">
-  <meta property="og:image" content="your-thumbnail-url.jpg">
-  <meta property="og:url" content="https://play.hhsmp.fun">
+  <meta property="og:image" content="https://mc.hhsmp.fun/banner.jpg">
+  <meta property="og:url" content="https://mc.hhsmp.fun">
   <meta name="keywords" content="Minecraft SMP, Minecraft Survival Server, Bedrock Java SMP, Heartland Horizons, Minecraft friends server">
-
   <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://mc.hhsmp.fun/favicon.ico" />
   <link rel="canonical" href="https://mc.hhsmp.fun" />
   <style>
+    :root {
+      --main-orange: #ff8c42;
+      --main-bg: #fbf8f3;
+      --box-bg: #fff;
+      --text-dark: #3a3a3a;
+      --text-light: #5b5b5b;
+      --shadow: 0 2px 12px rgba(0,0,0,0.06);
+      --radius: 12px;
+    }
+    html { scroll-behavior: smooth; }
     body {
-      background: #fbf8f3;
-      color: #3a3a3a;
+      background: var(--main-bg);
+      color: var(--text-dark);
       font-family: 'Poppins', sans-serif;
-      padding: 3rem 1rem;
-      max-width: 780px;
-      margin: auto;
+      padding: 0;
+      margin: 0;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(90deg, #ffaf7b 0%, #ff8c42 100%);
+      padding: 2.5rem 1rem 1.5rem;
+      text-align: center;
+      color: #fff;
+      border-radius: 0 0 var(--radius) var(--radius);
+      box-shadow: var(--shadow);
+    }
+    header img {
+      width: 90px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 4px solid #fff3;
     }
     h1 {
       font-family: 'Architects Daughter', cursive;
       font-size: 2.8rem;
-      color: #ff8c42;
-      margin-bottom: 0.2rem;
-      text-align: center;
+      margin-bottom: 0.3rem;
+      color: #fff;
+      letter-spacing: 1px;
     }
     .subtitle {
+      font-size: 1.2rem;
+      color: #fffbe7;
+      margin-bottom: 1.2rem;
+    }
+    .cta-btn {
+      display: inline-block;
+      margin: 1.2rem auto 0;
+      padding: 0.7rem 1.6rem;
+      background: #fff;
+      color: var(--main-orange);
+      font-weight: bold;
+      border-radius: 30px;
+      box-shadow: var(--shadow);
       font-size: 1.1rem;
-      text-align: center;
-      color: #5b5b5b;
-      margin-bottom: 2rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .cta-btn:hover {
+      background: var(--main-orange);
+      color: #fff;
+    }
+    main {
+      max-width: 800px;
+      margin: -2.5rem auto 0;
+      padding: 1.5rem;
     }
     section {
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
       padding: 1.5rem;
-      background: #ffffff;
-      border-left: 4px solid #ff8c42;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      border-radius: 10px;
+      background: var(--box-bg);
+      border-left: 5px solid var(--main-orange);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
     }
     section h2 {
       font-family: 'Architects Daughter', cursive;
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
-      color: #3a3a3a;
+      font-size: 1.5rem;
+      margin-bottom: 0.7rem;
+      color: var(--text-dark);
     }
-    section p {
-      margin-bottom: 1rem;
+    section p, section ul, section li {
+      font-size: 1rem;
+      color: var(--text-light);
     }
     ul {
       padding-left: 1.2rem;
+      margin-bottom: 1rem;
     }
     ul li::marker {
-      color: #ff8c42;
+      color: var(--main-orange);
     }
     .highlight {
-      color: #ff8c42;
+      color: var(--main-orange);
       font-weight: 600;
+    }
+    .server-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .server-ip {
+      background: #fff7ec;
+      border: 1px solid var(--main-orange);
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      font-family: monospace;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      user-select: all;
+    }
+    .server-ip.copied {
+      background: #ffd4a9;
     }
     .contact-links a {
       display: inline-block;
       margin-right: 1rem;
       margin-top: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: #ff8c42;
+      padding: 0.5rem 1.2rem;
+      background: var(--main-orange);
       color: #fff;
       text-decoration: none;
       border-radius: 20px;
       font-weight: bold;
-      transition: background 0.3s ease;
+      transition: background 0.3s;
+      box-shadow: 0 2px 8px #ff8c4230;
     }
     .contact-links a:hover {
       background: #e8752f;
     }
+    .team {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .team-member {
+      flex: 1 1 120px;
+      min-width: 120px;
+      background: #fff5eb;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      box-shadow: 0 1px 4px #ff8c4210;
+    }
+    .team-member strong {
+      color: var(--main-orange);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .faq {
+      margin-top: 1rem;
+      border-top: 1px solid #ffd4a9;
+      padding-top: 1rem;
+    }
+    .faq summary {
+      cursor: pointer;
+      font-weight: bold;
+      color: var(--main-orange);
+    }
+    .faq p {
+      margin-top: 0.5rem;
+      color: var(--text-light);
+    }
     footer {
       margin-top: 4rem;
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: #666;
+      padding-bottom: 2rem;
+    }
+    @media (max-width: 600px) {
+      main { padding: 0.7rem; }
+      section { padding: 1rem; }
+      .team { flex-direction: column; gap: 0.5rem; }
+      h1 { font-size: 2rem; }
     }
   </style>
+  <script>
+    function copyIP(ip, elementId) {
+      navigator.clipboard.writeText(ip);
+      const el = document.getElementById(elementId);
+      el.classList.add('copied');
+      el.innerText = 'Copied!';
+      setTimeout(() => {
+        el.classList.remove('copied');
+        el.innerText = ip;
+      }, 1200);
+    }
+  </script>
 </head>
 <body>
 
   <header>
+    <img src="https://mc.hhsmp.fun/logo.png" alt="Heartland Horizons SMP Logo" />
     <h1>Heartland Horizons SMP</h1>
-    <p class="subtitle">Cozy Minecraft Survival Server for friends — Java & Bedrock compatible</p>
+    <div class="subtitle">A cozy Minecraft Survival Experience — Java & Bedrock compatible</div>
+    <a href="#join" class="cta-btn">Join Now</a>
   </header>
 
-  <section>
-    <h2>How Our Minecraft Server Started</h2>
-    <p>We’re a group of friends who love Minecraft — building cool stuff, sharing laughs, and playing survival our way. No pay-to-win. No fancy plugins. Just fun, creativity, and community.</p>
-  </section>
+  <main>
+    <section>
+      <h2>Welcome to Heartland Horizons SMP</h2>
+      <p>We’re a friendly group of Minecraft lovers who value fun, fairness, and creativity. Build your dream base, run a shop, or join a bustling town – all in a supportive, drama-free community.</p>
+    </section>
 
-  <section>
-    <h2>Features of Heartland Horizons SMP</h2>
-    <ul>
-      <li>Economy based</li>
-      <li>Land claim </li>
-      <li>Player-run shops and trading</li>
-      <li>Weekly build challenges & themed events</li>
-      <li>Weekly pvp challenges with exclusive rewards</li>
-      <li>Start your own town and invite players</li>
-      <li>Friendly, responsive moderators</li>
-    </ul>
-    <p><span class="highlight">Server IP:</span> mc.hhsmp.fun</p>
-    <p><span class="highlight">Port:</span> 5910 (Bedrock only)</p>
-  </section>
+    <section id="join">
+      <h2>How to Join</h2>
+      <div class="server-info">
+        <span class="highlight">Java & Bedrock IP:</span>
+        <span id="ip-copy" class="server-ip" onclick="copyIP('mc.hhsmp.fun','ip-copy')">mc.hhsmp.fun</span>
+        <span class="highlight">Bedrock Port:</span>
+        <span id="port-copy" class="server-ip" onclick="copyIP('5910','port-copy')">5910</span>
+      </div>
+      <p>Open Minecraft, add a new server with the above IP.<br> Need help? <a href="https://discord.gg/y7wjhaEs" target="_blank">Ask on Discord</a>!</p>
+    </section>
 
-  <section>
-    <h2>Meet the Team</h2>
-    <p><strong>Owner:</strong> Shine Akhanda</p>
-    <p><strong>Co-Owners:</strong>Arian Rahman</p>
-    <p><strong>Admin:</strong> Cactus</p>
-    <p>Just regular players who love building epic stuff and creating a welcoming space for others to explore.</p>
-  </section>
+    <section>
+      <h2>Features</h2>
+      <ul>
+        <li>Economy based – player shops & trading</li>
+        <li>Land claim & grief protection</li>
+        <li>Weekly build and PvP challenges</li>
+        <li>Start your own town, invite friends</li>
+        <li>Friendly, responsive staff</li>
+        <li>Regular events and themed builds</li>
+      </ul>
+    </section>
 
-  <section>
-    <h2>Get in Touch</h2>
-    <p>Questions, ideas, or just wanna say hi? We’d love to hear from you.</p>
-    <div class="contact-links">
-      <a href="https://discord.gg/y7wjhaEs" target="_blank">Discord</a>
-      <a href="https://chat.whatsapp.com/FPPtqq2BvpqDY7cVRMNmj9?mode=ac_t" target="_blank">WhatsApp</a>
-    </div>
-  </section>
+    <section>
+      <h2>Meet the Team</h2>
+      <div class="team">
+        <div class="team-member">
+          <strong>Shine Akhanda</strong>
+          <span>Owner</span>
+        </div>
+        <div class="team-member">
+          <strong>Arian Rahman</strong>
+          <span>Co-Owner</span>
+        </div>
+        <div class="team-member">
+          <strong>Cactus</strong>
+          <span>Admin</span>
+        </div>
+      </div>
+      <p>We’re just regular players who love building epic things and welcoming new friends!</p>
+    </section>
 
-  <section>
-    <h2>Support the Server</h2>
-    <p>Donations help us keep the server awesome — hosting, updates, and new events all need support.</p>
-    <p><span class="highlight">Nagad:</span> 01302776234</p>
-    <p>Thanks a ton if you choose to help out 💛</p>
-  </section>
+    <section>
+      <h2>Community & Support</h2>
+      <p>Questions or ideas? Join our community chats:</p>
+      <div class="contact-links">
+        <a href="https://discord.gg/y7wjhaEs" target="_blank" rel="noopener">Discord</a>
+        <a href="https://chat.whatsapp.com/FPPtqq2BvpqDY7cVRMNmj9?mode=ac_t" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Support the Server</h2>
+      <p>Love the server? Donations help us pay for hosting, updates, and events.<br>
+      <span class="highlight">Nagad:</span> 01302776234</p>
+      <p>Thank you for keeping the dream alive 💛</p>
+    </section>
+
+    <section>
+      <h2>FAQ</h2>
+      <details class="faq">
+        <summary>Is griefing allowed?</summary>
+        <p>No griefing! We use land claims and have active moderators to keep things safe and fun.</p>
+      </details>
+      <details class="faq">
+        <summary>Can I play on Bedrock?</summary>
+        <p>Yes! Just use the IP and Bedrock port above.</p>
+      </details>
+      <details class="faq">
+        <summary>How do I get started?</summary>
+        <p>Join the server, say hi, and ask staff or players for help anytime!</p>
+      </details>
+      <details class="faq">
+        <summary>How do I donate?</summary>
+        <p>Send support via Nagad to 01302776234. Thank you!</p>
+      </details>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2025 Heartland Horizons SMP · built with love by Shine and friends</p>
+    © 2025 Heartland Horizons SMP · built with love by Shine and friends
   </footer>
 
 </body>
