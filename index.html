@@ -18,62 +18,84 @@
       --main-orange: #ff8c42;
       --main-bg: #fbf8f3;
       --box-bg: #fff;
-      --text-dark: #3a3a3a;
-      --text-light: #5b5b5b;
-      --shadow: 0 2px 12px rgba(0,0,0,0.06);
-      --radius: 12px;
+      --text-dark: #252525;
+      --text-light: #555;
+      --accent: #ffd89b;
+      --shadow: 0 4px 18px rgba(0,0,0,0.08);
+      --radius: 14px;
     }
     html { scroll-behavior: smooth; }
     body {
       background: var(--main-bg);
       color: var(--text-dark);
       font-family: 'Poppins', sans-serif;
-      padding: 0;
-      margin: 0;
-      min-height: 100vh;
+      margin: 0; padding: 0;
     }
-    header {
-      background: linear-gradient(90deg, #ffaf7b 0%, #ff8c42 100%);
-      padding: 2.5rem 1rem 1.5rem;
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(120deg, #ffecd2 0%, #ff8c42 100%), url('https://mc.hhsmp.fun/banner.jpg') center/cover no-repeat;
+      color: #fff;
       text-align: center;
-      color: #fff;
-      border-radius: 0 0 var(--radius) var(--radius);
-      box-shadow: var(--shadow);
+      padding: 4rem 1rem 3rem 1rem;
+      position: relative;
     }
-    header img {
-      width: 90px;
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, #ffecd2cc 0%, #ff8c42cc 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero img {
+      width: 110px; height: 110px;
       border-radius: 50%;
-      margin-bottom: 1rem;
-      border: 4px solid #fff3;
+      border: 5px solid #fff7;
+      margin-bottom: 1.4rem;
+      box-shadow: 0 2px 14px #0002;
+      background: #fff;
     }
-    h1 {
+    .hero h1 {
       font-family: 'Architects Daughter', cursive;
-      font-size: 2.8rem;
-      margin-bottom: 0.3rem;
+      font-size: 3rem;
+      margin: 0 0 0.5rem 0;
+      letter-spacing: 2px;
       color: #fff;
-      letter-spacing: 1px;
+      text-shadow: 0 2px 8px #ff8c4250;
     }
-    .subtitle {
-      font-size: 1.2rem;
-      color: #fffbe7;
-      margin-bottom: 1.2rem;
+    .hero .subtitle {
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: #fee2c3;
+      margin-bottom: 1.5rem;
     }
     .cta-btn {
       display: inline-block;
-      margin: 1.2rem auto 0;
-      padding: 0.7rem 1.6rem;
+      margin: 0.7rem 0 0 0;
+      padding: 0.8rem 2.2rem;
       background: #fff;
       color: var(--main-orange);
       font-weight: bold;
       border-radius: 30px;
-      box-shadow: var(--shadow);
       font-size: 1.1rem;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
+      letter-spacing: 1.5px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 16px #ff8c4233;
+      transition: background 0.18s, color 0.18s, transform 0.14s;
+      animation: popin 1.1s cubic-bezier(.38,1.35,.47,.93);
     }
     .cta-btn:hover {
       background: var(--main-orange);
       color: #fff;
+      transform: translateY(-3px) scale(1.04);
+    }
+    @keyframes popin {
+      from { opacity: 0; transform: scale(0.8);}
+      to { opacity: 1; transform: scale(1);}
     }
     main {
       max-width: 800px;
@@ -84,18 +106,21 @@
       margin-bottom: 2.5rem;
       padding: 1.5rem;
       background: var(--box-bg);
-      border-left: 5px solid var(--main-orange);
+      border-left: 6px solid var(--main-orange);
       box-shadow: var(--shadow);
       border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
     }
     section h2 {
       font-family: 'Architects Daughter', cursive;
       font-size: 1.5rem;
-      margin-bottom: 0.7rem;
-      color: var(--text-dark);
+      color: var(--main-orange);
+      margin-bottom: 0.75rem;
+      letter-spacing: 1px;
     }
     section p, section ul, section li {
-      font-size: 1rem;
+      font-size: 1.04rem;
       color: var(--text-light);
     }
     ul {
@@ -126,6 +151,8 @@
       cursor: pointer;
       transition: background 0.2s;
       user-select: all;
+      min-width: 120px;
+      text-align: center;
     }
     .server-ip.copied {
       background: #ffd4a9;
@@ -140,16 +167,18 @@
       text-decoration: none;
       border-radius: 20px;
       font-weight: bold;
-      transition: background 0.3s;
-      box-shadow: 0 2px 8px #ff8c4230;
+      transition: background 0.22s, box-shadow 0.22s;
+      box-shadow: 0 2px 8px #ff8c4225;
     }
     .contact-links a:hover {
       background: #e8752f;
+      box-shadow: 0 4px 18px #ff8c4266;
     }
     .team {
       display: flex;
       gap: 2rem;
       flex-wrap: wrap;
+      justify-content: center;
     }
     .team-member {
       flex: 1 1 120px;
@@ -165,6 +194,36 @@
       color: var(--main-orange);
       display: block;
       margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+    /* Testimonials */
+    .testimonials {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+      justify-content: center;
+    }
+    .testimonial {
+      flex: 1 1 210px;
+      background: #fff3e6;
+      border-left: 4px solid var(--main-orange);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      font-style: italic;
+      color: #444;
+      min-width: 210px;
+      box-shadow: 0 1px 6px #ff8c4210;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    .testimonial .author {
+      display: block;
+      margin-top: 0.7rem;
+      font-size: 0.97rem;
+      color: #e8752f;
+      font-weight: bold;
     }
     .faq {
       margin-top: 1rem;
@@ -175,23 +234,27 @@
       cursor: pointer;
       font-weight: bold;
       color: var(--main-orange);
+      outline: none;
+      font-size: 1.07rem;
     }
     .faq p {
       margin-top: 0.5rem;
       color: var(--text-light);
     }
     footer {
-      margin-top: 4rem;
+      margin-top: 3rem;
       text-align: center;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       color: #666;
       padding-bottom: 2rem;
     }
     @media (max-width: 600px) {
-      main { padding: 0.7rem; }
+      main { padding: 0.6rem; }
       section { padding: 1rem; }
       .team { flex-direction: column; gap: 0.5rem; }
-      h1 { font-size: 2rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero img { width: 70px; height: 70px; }
+      .testimonials { flex-direction: column; gap: 0.7rem;}
     }
   </style>
   <script>
@@ -209,17 +272,22 @@
 </head>
 <body>
 
-  <header>
-    <img src="https://mc.hhsmp.fun/logo.png" alt="Heartland Horizons SMP Logo" />
-    <h1>Heartland Horizons SMP</h1>
-    <div class="subtitle">A cozy Minecraft Survival Experience — Java & Bedrock compatible</div>
-    <a href="#join" class="cta-btn">Join Now</a>
-  </header>
+  <!-- HERO/HEADER -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="https://mc.hhsmp.fun/logo.png" alt="Heartland Horizons SMP Logo" />
+      <h1>Heartland Horizons SMP</h1>
+      <div class="subtitle">A cozy Minecraft Survival Experience — Java & Bedrock compatible</div>
+      <a href="#join" class="cta-btn">Join the Adventure</a>
+    </div>
+  </section>
 
   <main>
     <section>
-      <h2>Welcome to Heartland Horizons SMP</h2>
-      <p>We’re a friendly group of Minecraft lovers who value fun, fairness, and creativity. Build your dream base, run a shop, or join a bustling town – all in a supportive, drama-free community.</p>
+      <h2>Why Heartland Horizons?</h2>
+      <p>
+        Escape the chaos of big servers. At Heartland Horizons, we’re a tight-knit, welcoming community for creative builders, friendly traders, and explorers who love Minecraft for what it is — adventure, creativity, and good times with friends.
+      </p>
     </section>
 
     <section id="join">
@@ -230,23 +298,23 @@
         <span class="highlight">Bedrock Port:</span>
         <span id="port-copy" class="server-ip" onclick="copyIP('5910','port-copy')">5910</span>
       </div>
-      <p>Open Minecraft, add a new server with the above IP.<br> Need help? <a href="https://discord.gg/y7wjhaEs" target="_blank">Ask on Discord</a>!</p>
+      <p>Open Minecraft, add a new server using the above IP.<br> Need help? <a href="https://discord.gg/y7wjhaEs" target="_blank">Ask on Discord</a>!</p>
     </section>
 
     <section>
-      <h2>Features</h2>
+      <h2>Server Features</h2>
       <ul>
-        <li>Economy based – player shops & trading</li>
+        <li>Economy based — player shops & trading</li>
         <li>Land claim & grief protection</li>
         <li>Weekly build and PvP challenges</li>
-        <li>Start your own town, invite friends</li>
+        <li>Player-run towns & events</li>
         <li>Friendly, responsive staff</li>
-        <li>Regular events and themed builds</li>
+        <li>Regular themed builds & fun surprises</li>
       </ul>
     </section>
 
     <section>
-      <h2>Meet the Team</h2>
+      <h2>The Team</h2>
       <div class="team">
         <div class="team-member">
           <strong>Shine Akhanda</strong>
@@ -265,7 +333,25 @@
     </section>
 
     <section>
-      <h2>Community & Support</h2>
+      <h2>Community Vibes</h2>
+      <div class="testimonials">
+        <div class="testimonial">
+          “The friendliest Minecraft server I’ve ever joined — everyone helps you out and the builds are amazing!”
+          <span class="author">– Alex</span>
+        </div>
+        <div class="testimonial">
+          “Weekly events keep things exciting, and staff actually care about players. 10/10 recommend!”
+          <span class="author">– Priya</span>
+        </div>
+        <div class="testimonial">
+          “It’s the only SMP I’ve stuck with — awesome people, chill survival, and no pay-to-win junk.”
+          <span class="author">– Leo</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Get in Touch</h2>
       <p>Questions or ideas? Join our community chats:</p>
       <div class="contact-links">
         <a href="https://discord.gg/y7wjhaEs" target="_blank" rel="noopener">Discord</a>
@@ -284,11 +370,11 @@
       <h2>FAQ</h2>
       <details class="faq">
         <summary>Is griefing allowed?</summary>
-        <p>No griefing! We use land claims and have active moderators to keep things safe and fun.</p>
+        <p>No griefing! Land claims and moderators keep everyone safe and happy.</p>
       </details>
       <details class="faq">
         <summary>Can I play on Bedrock?</summary>
-        <p>Yes! Just use the IP and Bedrock port above.</p>
+        <p>Yes! Use the IP and Bedrock port above.</p>
       </details>
       <details class="faq">
         <summary>How do I get started?</summary>
